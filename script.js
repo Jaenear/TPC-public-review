@@ -4,10 +4,13 @@ const nav = document.querySelector(".site-nav");
 const diagnosisForm = document.querySelector(".diagnosis-form");
 const formNote = document.querySelector(".form-note");
 const revealSelectors = [
+  ".hero-art",
+  ".hero-ribbon",
   ".trust-band > div",
   ".section-kicker",
   ".section-heading-row",
   ".coach-card",
+  ".flow-visual",
   ".library-equation",
   ".step-card",
   ".lecture-group",
@@ -26,6 +29,8 @@ function trackEvent(eventName, detail = {}) {
 }
 
 let scrollTicking = false;
+let pointerTicking = false;
+let pointerEvent = null;
 
 function updateScrollState() {
   const scrollY = window.scrollY || 0;
@@ -40,6 +45,23 @@ function queueScrollUpdate() {
   if (scrollTicking) return;
   scrollTicking = true;
   window.requestAnimationFrame(updateScrollState);
+}
+
+function updatePointerState() {
+  if (!pointerEvent) return;
+  const pointerX = pointerEvent.clientX / Math.max(window.innerWidth, 1) - 0.5;
+  const pointerY = pointerEvent.clientY / Math.max(window.innerHeight, 1) - 0.5;
+
+  document.documentElement.style.setProperty("--pointer-x", pointerX.toFixed(3));
+  document.documentElement.style.setProperty("--pointer-y", pointerY.toFixed(3));
+  pointerTicking = false;
+}
+
+function queuePointerUpdate(event) {
+  pointerEvent = event;
+  if (pointerTicking) return;
+  pointerTicking = true;
+  window.requestAnimationFrame(updatePointerState);
 }
 
 function setupRevealAnimation() {
@@ -107,5 +129,6 @@ diagnosisForm?.addEventListener("submit", (event) => {
 
 window.addEventListener("scroll", queueScrollUpdate, { passive: true });
 window.addEventListener("resize", queueScrollUpdate, { passive: true });
+window.addEventListener("pointermove", queuePointerUpdate, { passive: true });
 updateScrollState();
 setupRevealAnimation();

@@ -8,6 +8,13 @@
       content="투페어 포커캠프는 한국 홀덤 필드에서 바로 쓰는 실전 중심 포커 트레이닝 플랫폼입니다."
     />
     <title>투페어 포커캠프 | Two Pair Poker Camp</title>
+    <link rel="preload" as="image" href="./assets/tpc-logo.svg" />
+    <link rel="preload" as="image" href="./assets/tpc-hero-orbit.png" />
+    <link rel="preload" as="image" href="./assets/tpc-learning-flow.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,11 +26,7 @@
   <body>
     <header class="site-header" aria-label="주요 메뉴">
       <a class="brand-lockup" href="#top" data-track="nav_logo_click" aria-label="투페어 포커캠프 홈">
-        <span class="brand-mark">TPC</span>
-        <span class="brand-text">
-          <strong>투페어 포커캠프</strong>
-          <span>Two Pair Poker Camp</span>
-        </span>
+        <img class="brand-logo" src="./assets/tpc-logo.svg" alt="투페어 포커캠프" />
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -50,8 +53,11 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-bg" role="img" aria-label="포커 테이블 위 핸드 분석과 코칭 자료"></div>
+        <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-overlay"></div>
+        <figure class="hero-art" aria-label="포커 핸드 리뷰와 레인지 분석을 시각화한 트레이닝 장면">
+          <img src="./assets/tpc-hero-orbit.png" alt="" />
+        </figure>
 
         <div class="hero-content">
           <p class="eyebrow">Two Pair Poker Camp</p>
@@ -74,6 +80,12 @@
           </div>
 
           <div class="hero-quote">좋은 핸드보다 중요한 건, 좋은 판단입니다.</div>
+
+          <div class="hero-ribbon" aria-label="캠프 운영 방식">
+            <span>Main Coach Led</span>
+            <span>Free to Paid Path</span>
+            <span>Hand Review First</span>
+          </div>
         </div>
 
         <a class="scroll-cue" href="#coaches" aria-label="코치진 섹션으로 이동">
@@ -184,6 +196,10 @@
             훈련 과제를 정리하는 캠프형 학습 구조를 지향합니다.
           </p>
         </div>
+
+        <figure class="flow-visual" aria-label="핸드 업로드, 누수 진단, 커리큘럼 추천으로 이어지는 학습 흐름">
+          <img src="./assets/tpc-learning-flow.png" alt="" />
+        </figure>
 
         <div class="library-equation" aria-label="훈련 루프 요약">
           <div>
@@ -500,7 +516,7 @@
 
     <footer class="site-footer">
       <div class="footer-brand">
-        <strong>투페어 포커캠프</strong>
+        <img class="footer-logo" src="./assets/tpc-logo.svg" alt="투페어 포커캠프" />
         <span>Two Pair Poker Camp</span>
       </div>
       <div class="footer-notice">
