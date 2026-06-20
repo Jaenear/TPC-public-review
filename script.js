@@ -1,0 +1,111 @@
+const body = document.body;
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".site-nav");
+const diagnosisForm = document.querySelector(".diagnosis-form");
+const formNote = document.querySelector(".form-note");
+const revealSelectors = [
+  ".trust-band > div",
+  ".section-kicker",
+  ".section-heading-row",
+  ".coach-card",
+  ".library-equation",
+  ".step-card",
+  ".lecture-group",
+  ".program-card",
+  ".diagnosis-copy",
+  ".diagnosis-form",
+  ".resource-list a",
+  ".review-visual",
+  ".review-section > div:not(.review-visual)",
+  ".community-section",
+];
+
+function trackEvent(eventName, detail = {}) {
+  if (!eventName) return;
+  console.info(`[TPC event] ${eventName}`, detail);
+}
+
+let scrollTicking = false;
+
+function updateScrollState() {
+  const scrollY = window.scrollY || 0;
+  const scrollRatio = Math.min(scrollY / 700, 1).toFixed(3);
+
+  body.classList.toggle("has-scrolled", scrollY > 12);
+  document.documentElement.style.setProperty("--scroll-ratio", scrollRatio);
+  scrollTicking = false;
+}
+
+function queueScrollUpdate() {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  window.requestAnimationFrame(updateScrollState);
+}
+
+function setupRevealAnimation() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealTargets = [...document.querySelectorAll(revealSelectors.join(","))];
+
+  revealTargets.forEach((element, index) => {
+    element.dataset.reveal = "";
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 5, 4) * 70}ms`);
+  });
+
+  body.classList.add("reveal-ready");
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealTargets.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "0px 0px -8% 0px",
+      threshold: 0.16,
+    },
+  );
+
+  revealTargets.forEach((element) => observer.observe(element));
+}
+
+menuToggle?.addEventListener("click", () => {
+  const isOpen = nav?.classList.toggle("is-open");
+  body.classList.toggle("menu-open", Boolean(isOpen));
+  menuToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+});
+
+nav?.addEventListener("click", (event) => {
+  if (event.target instanceof HTMLAnchorElement) {
+    nav.classList.remove("is-open");
+    body.classList.remove("menu-open");
+    menuToggle?.setAttribute("aria-expanded", "false");
+  }
+});
+
+document.querySelectorAll("[data-event], [data-track]").forEach((element) => {
+  element.addEventListener("click", () => {
+    trackEvent(element.getAttribute("data-event") || element.getAttribute("data-track"), {
+      label: element.textContent?.trim().replace(/\s+/g, " "),
+    });
+  });
+});
+
+diagnosisForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const data = new FormData(diagnosisForm);
+  trackEvent("diagnosis_submit", Object.fromEntries(data.entries()));
+  formNote.textContent = "진단 요청이 준비되었습니다. 실제 서비스 연결 전까지 외부로 전송되지 않습니다.";
+  diagnosisForm.querySelector("button[type='submit']").textContent = "진단 요청 준비 완료";
+});
+
+window.addEventListener("scroll", queueScrollUpdate, { passive: true });
+window.addEventListener("resize", queueScrollUpdate, { passive: true });
+updateScrollState();
+setupRevealAnimation();
