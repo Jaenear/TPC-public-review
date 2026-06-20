@@ -8,7 +8,7 @@
       content="투페어 포커캠프는 한국 홀덤 필드에서 바로 쓰는 실전 중심 포커 트레이닝 플랫폼입니다."
     />
     <title>투페어 포커캠프 | Two Pair Poker Camp</title>
-    <link rel="preload" as="image" href="./assets/tpc-logo.svg" />
+    <link rel="preload" as="image" href="./assets/tpc-logo-header.svg" />
     <link rel="preload" as="image" href="./assets/tpc-hero-orbit.png" />
     <link rel="preload" as="image" href="./assets/tpc-learning-flow.png" />
     <link
@@ -26,7 +26,7 @@
   <body>
     <header class="site-header" aria-label="주요 메뉴">
       <a class="brand-lockup" href="#top" data-track="nav_logo_click" aria-label="투페어 포커캠프 홈">
-        <img class="brand-logo" src="./assets/tpc-logo.svg" alt="투페어 포커캠프" />
+        <img class="brand-logo" src="./assets/tpc-logo-header.svg" alt="투페어 포커캠프" />
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -37,16 +37,16 @@
       </button>
 
       <nav id="site-nav" class="site-nav">
+        <a href="#method">훈련 방식</a>
         <a href="#coaches">코치진</a>
-        <a href="#courses">무료 강의</a>
-        <a href="#paid-courses">유료 강의</a>
+        <a href="#courses">강의 라이브러리</a>
         <a href="#diagnosis">핸드 진단</a>
         <a href="#live-review">라이브 리뷰</a>
         <a href="#community">커뮤니티</a>
       </nav>
 
-      <a class="header-cta" href="#courses" data-event="course_card_click">
-        강의 보기
+      <a class="header-cta" href="#diagnosis" data-event="diagnosis_start">
+        무료 진단
         <span aria-hidden="true">↗</span>
       </a>
     </header>
@@ -60,21 +60,21 @@
         </figure>
 
         <div class="hero-content">
-          <p class="eyebrow">Two Pair Poker Camp</p>
+          <p class="eyebrow">Two Pair Poker Camp · Coach-Led Training</p>
           <h1 id="hero-title">투페어 포커캠프</h1>
-          <p class="hero-lede">한국 홀덤 필드에서 바로 쓰는 실전 중심 포커 트레이닝</p>
+          <p class="hero-lede">혼자 치던 홀덤을, 검증된 코치와 구조적으로 훈련하는 곳</p>
           <p class="hero-copy">
-            검증된 메인 코치들의 핸드 리뷰, 무료 강의, 유료 심화 커리큘럼, 라이브 코칭을
-            한 곳에서 시작하세요.
+            무료 강의로 캠프의 관점을 확인하고, 유료 심화 트랙과 라이브 리뷰로 반복되는
+            누수를 고칩니다. 한국 라이브·MTT 필드에 맞춘 핸드 중심 트레이닝입니다.
           </p>
 
           <div class="hero-actions" aria-label="주요 행동">
-            <a class="button button-primary" href="#courses" data-event="hero_cta_click">
+            <a class="button button-primary" href="#diagnosis" data-event="hero_cta_click">
               <span aria-hidden="true">◆</span>
-              무료 강의 먼저 보기
+              무료 핸드 진단 받기
             </a>
-            <a class="button button-secondary" href="#paid-courses" data-event="course_card_click">
-              유료 커리큘럼 보기
+            <a class="button button-secondary" href="#courses" data-event="course_card_click">
+              강의 라이브러리 보기
               <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -82,13 +82,14 @@
           <div class="hero-quote">좋은 핸드보다 중요한 건, 좋은 판단입니다.</div>
 
           <div class="hero-ribbon" aria-label="캠프 운영 방식">
-            <span>Main Coach Led</span>
-            <span>Free to Paid Path</span>
-            <span>Hand Review First</span>
+            <span>Verified Coaches</span>
+            <span>Free Lessons</span>
+            <span>Paid Tracks</span>
+            <span>Live Review</span>
           </div>
         </div>
 
-        <a class="scroll-cue" href="#coaches" aria-label="코치진 섹션으로 이동">
+        <a class="scroll-cue" href="#method" aria-label="훈련 방식 섹션으로 이동">
           <span></span>
           <strong>Take a Tour</strong>
         </a>
@@ -114,30 +115,76 @@
 
       <section class="trust-band" aria-label="핵심 제공 가치">
         <div>
-          <span>Main Coaches</span>
+          <span>Coaches</span>
           <strong>검증된 코치진</strong>
         </div>
         <div>
           <span>Free Lessons</span>
-          <strong>무료 강의</strong>
+          <strong>무료 입문 강의</strong>
         </div>
         <div>
-          <span>Paid Courses</span>
-          <strong>유료 강의</strong>
+          <span>Paid Tracks</span>
+          <strong>유료 심화 트랙</strong>
         </div>
         <div>
           <span>Live Review</span>
-          <strong>라이브 리뷰</strong>
+          <strong>월간 라이브 리뷰</strong>
+        </div>
+      </section>
+
+      <section id="method" class="section proof-section" aria-labelledby="method-title">
+        <div class="section-kicker">Why Go TPC?</div>
+        <div class="section-heading-row">
+          <h2 id="method-title">유명 강의보다 먼저 필요한 건, 내 플레이를 고치는 구조입니다</h2>
+          <p>
+            투페어 포커캠프는 강의 목록을 쌓는 사이트가 아니라, 코치의 기준으로 핸드를
+            해석하고 다음 훈련 과제를 정리하는 한국형 포커 캠프입니다.
+          </p>
+        </div>
+
+        <div class="proof-grid">
+          <article class="proof-card">
+            <span>Quality</span>
+            <h3>메인 코치가 앞에 서는 구조</h3>
+            <p>
+              코치의 검증 가능한 경력, 샘플 강의, 리뷰 기준을 먼저 보여주고 강의로
+              연결합니다.
+            </p>
+          </article>
+          <article class="proof-card">
+            <span>Depth</span>
+            <h3>무료에서 유료로 이어지는 학습 경로</h3>
+            <p>
+              프리플랍, 팟오즈, 실전 복기표는 무료로 열고, 라이브 홀덤·MTT·ICM은 심화
+              트랙으로 설계합니다.
+            </p>
+          </article>
+          <article class="proof-card">
+            <span>Practice</span>
+            <h3>핸드 진단 중심의 실전 적용</h3>
+            <p>
+              결과보다 액션의 이유를 점검합니다. 포지션, 스택, 상대 성향에 따라 같은
+              핸드도 다른 답을 찾습니다.
+            </p>
+          </article>
+          <article class="proof-card">
+            <span>Community</span>
+            <h3>복기방에서 반복되는 누수 추적</h3>
+            <p>
+              강의를 본 뒤 끝내지 않고, 주간 핸드 토론과 라이브 리뷰로 같은 실수를
+              줄입니다.
+            </p>
+          </article>
         </div>
       </section>
 
       <section id="coaches" class="section featured-coaches" aria-labelledby="coaches-title">
         <div class="section-kicker">Main Coaches</div>
         <div class="section-heading-row">
-          <h2 id="coaches-title">검증된 메인 코치들을 전면에 세웁니다</h2>
+          <h2 id="coaches-title">코치가 브랜드의 앞에 서야 합니다</h2>
           <p>
-            실제 이름과 성과가 확정되면 이 영역에 바로 반영합니다. 현재는 허위 수상 경력이나
-            수익 표현 없이, 검증 자료를 넣을 수 있는 코치 슬롯으로 구성했습니다.
+            실제 이름과 성과가 확정되면 이 영역에 바로 반영합니다. 허위 수상 경력이나
+            보장성 표현 없이, 코치별 전문 영역과 검증 자료가 먼저 보이도록 설계했습니다.
           </p>
         </div>
 
@@ -237,6 +284,64 @@
         </div>
       </section>
 
+      <section class="section suite-section" aria-labelledby="suite-title">
+        <div class="section-kicker">Training Stack</div>
+        <div class="suite-layout">
+          <div>
+            <h2 id="suite-title">강의를 보는 사이트가 아니라, 플레이를 고치는 훈련 스택</h2>
+            <p>
+              예습은 무료 강의로, 깊이는 유료 트랙으로, 적용은 핸드 진단과 라이브 리뷰로
+              이어집니다. 각 기능은 독립된 상품이 아니라 하나의 훈련 루프로 연결됩니다.
+            </p>
+          </div>
+          <div class="suite-board" aria-label="TPC 훈련 스택">
+            <div>
+              <span>01</span>
+              <strong>Watch</strong>
+              <em>무료 강의와 샘플 리뷰로 기준 확인</em>
+            </div>
+            <div>
+              <span>02</span>
+              <strong>Study</strong>
+              <em>유료 트랙에서 레인지와 스팟별 플랜 정리</em>
+            </div>
+            <div>
+              <span>03</span>
+              <strong>Review</strong>
+              <em>핸드 진단으로 내 누수와 다음 과제 확인</em>
+            </div>
+            <div>
+              <span>04</span>
+              <strong>Repeat</strong>
+              <em>복기방과 라이브 리뷰로 반복 학습</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="suite-card-grid">
+          <article class="suite-card">
+            <span>Free Library</span>
+            <h3>무료 강의 라이브러리</h3>
+            <p>처음 들어온 플레이어가 바로 확인할 수 있는 오픈 레인지, 복기표, 숏스택 체크리스트.</p>
+          </article>
+          <article class="suite-card">
+            <span>Masterclass</span>
+            <h3>유료 심화 커리큘럼</h3>
+            <p>라이브 홀덤, MTT &amp; ICM, 프리플랍 시스템, 멘탈·뱅크롤을 코치별 트랙으로 구성.</p>
+          </article>
+          <article class="suite-card">
+            <span>Live Room</span>
+            <h3>라이브 리뷰룸</h3>
+            <p>월간 세미나, Q&amp;A, 멤버 핸드 리뷰를 통해 강의 내용을 실제 스팟으로 다시 확인.</p>
+          </article>
+          <article class="suite-card">
+            <span>Coach Notes</span>
+            <h3>개인 진단 리포트</h3>
+            <p>첫 무료 진단 이후 반복되는 누수, 추천 강의, 다음 복기 과제를 짧게 정리.</p>
+          </article>
+        </div>
+      </section>
+
       <section id="courses" class="section courses-section" aria-labelledby="courses-title">
         <div class="section-kicker">Curriculum</div>
         <div class="section-heading-row">
@@ -245,6 +350,16 @@
             처음부터 결제를 강요하지 않습니다. 무료 강의로 캠프의 관점을 확인하고, 필요한
             플레이 영역만 유료 커리큘럼으로 확장합니다.
           </p>
+        </div>
+
+        <div class="course-filter-bar" aria-label="강의 카테고리">
+          <span>NLHE Live</span>
+          <span>MTT</span>
+          <span>ICM</span>
+          <span>Preflop</span>
+          <span>Mental</span>
+          <span>Free</span>
+          <span>Paid</span>
         </div>
 
         <div class="lecture-layout">
@@ -369,6 +484,51 @@
               </article>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="membership" class="section membership-section" aria-labelledby="membership-title">
+        <div class="section-kicker">Membership Path</div>
+        <div class="section-heading-row">
+          <h2 id="membership-title">무료로 확인하고, 필요한 순간에 깊게 들어가세요</h2>
+          <p>
+            예시 페이지처럼 월 구독/연 구독 구조로 확장할 수 있도록, 현재 메인에는 무료
+            입문과 유료 캠프의 차이를 명확히 보여주는 선택지를 배치했습니다.
+          </p>
+        </div>
+
+        <div class="membership-grid">
+          <article class="membership-card">
+            <span>Start Free</span>
+            <h3>무료 캠프</h3>
+            <p>캠프의 관점과 코치 스타일을 먼저 확인하는 입문 경로입니다.</p>
+            <ul>
+              <li>프리플랍 오픈 레인지</li>
+              <li>홀덤펍 실전 복기표</li>
+              <li>15BB 토너먼트 체크리스트</li>
+              <li>첫 핸드 무료 진단</li>
+            </ul>
+            <a class="button button-secondary" href="#diagnosis" data-event="diagnosis_start">
+              무료로 시작
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="membership-card membership-card-featured">
+            <span>Go Deeper</span>
+            <h3>프로 캠프</h3>
+            <p>반복되는 누수를 코치와 함께 고치고 싶은 플레이어를 위한 유료 경로입니다.</p>
+            <ul>
+              <li>유료 심화 강의 전체 트랙</li>
+              <li>월간 라이브 리뷰와 Q&amp;A</li>
+              <li>코치별 핸드 리뷰 세션</li>
+              <li>개인 누수 기반 추천 커리큘럼</li>
+            </ul>
+            <a class="button button-primary" href="#paid-courses" data-event="course_card_click">
+              유료 트랙 보기
+              <span aria-hidden="true">↗</span>
+            </a>
+          </article>
         </div>
       </section>
 
@@ -512,11 +672,67 @@
           캠프 참여하기
         </a>
       </section>
+
+      <section class="section faq-section" aria-labelledby="faq-title">
+        <div class="section-kicker">FAQ</div>
+        <div class="section-heading-row">
+          <h2 id="faq-title">가입 전에 바로 확인해야 할 것들</h2>
+          <p>
+            무료 자료, 유료 강의, 라이브 리뷰, 책임 고지까지 메인 전환 전에 필요한 정보를
+            짧게 정리했습니다.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <details open>
+            <summary>무료 강의만 봐도 도움이 되나요?</summary>
+            <p>
+              네. 무료 강의는 캠프의 기준과 코치 스타일을 확인하는 용도입니다. 프리플랍,
+              숏스택, 복기표처럼 바로 적용 가능한 주제부터 제공합니다.
+            </p>
+          </details>
+          <details>
+            <summary>유료 강의는 무엇이 다른가요?</summary>
+            <p>
+              유료 트랙은 코치별 커리큘럼, 라이브 리뷰, 핸드 진단 후 추천 과제까지 연결되는
+              심화 학습용입니다.
+            </p>
+          </details>
+          <details>
+            <summary>라이브 홀덤 플레이어도 들을 수 있나요?</summary>
+            <p>
+              라이브 필드에서 자주 나오는 림프, 멀티웨이, 콜링 성향, 사이징 조정까지 다루는
+              트랙을 전면에 둡니다.
+            </p>
+          </details>
+          <details>
+            <summary>수익이나 승률을 보장하나요?</summary>
+            <p>
+              보장하지 않습니다. 투페어 포커캠프는 만 19세 이상 성인을 위한 교육 및 전략
+              콘텐츠이며, 도박 참여를 권장하지 않습니다.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section final-cta" aria-labelledby="final-cta-title">
+        <div>
+          <div class="section-kicker">Start Training</div>
+          <h2 id="final-cta-title">첫 번째 핸드부터 코치의 기준으로 다시 보세요</h2>
+          <p>
+            애매했던 한 핸드를 남기면, 지금 가장 먼저 고쳐야 할 판단 기준부터 정리합니다.
+          </p>
+        </div>
+        <a class="button button-primary" href="#diagnosis" data-event="diagnosis_start">
+          <span aria-hidden="true">◆</span>
+          무료 핸드 진단 받기
+        </a>
+      </section>
     </main>
 
     <footer class="site-footer">
       <div class="footer-brand">
-        <img class="footer-logo" src="./assets/tpc-logo.svg" alt="투페어 포커캠프" />
+        <img class="footer-logo" src="./assets/tpc-logo-header.svg" alt="투페어 포커캠프" />
         <span>Two Pair Poker Camp</span>
       </div>
       <div class="footer-notice">
@@ -527,8 +743,8 @@
       </div>
     </footer>
 
-    <a class="mobile-sticky-cta" href="#courses" data-event="hero_cta_click">
-      무료 강의 먼저 보기
+    <a class="mobile-sticky-cta" href="#diagnosis" data-event="hero_cta_click">
+      무료 핸드 진단 받기
     </a>
 
     <script src="./script.js"></script>
