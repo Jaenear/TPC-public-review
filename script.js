@@ -3,6 +3,7 @@ const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".site-nav");
 const diagnosisForm = document.querySelector(".diagnosis-form");
 const formNote = document.querySelector(".form-note");
+
 const revealSelectors = [
   ".hero-art",
   ".hero-ribbon",
@@ -77,7 +78,7 @@ function setupRevealAnimation() {
 
   revealTargets.forEach((element, index) => {
     element.dataset.reveal = "";
-    element.style.setProperty("--reveal-delay", `${Math.min(index % 5, 4) * 70}ms`);
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 5, 4) * 60}ms`);
   });
 
   body.classList.add("reveal-ready");
@@ -96,14 +97,52 @@ function setupRevealAnimation() {
       });
     },
     {
-      rootMargin: "0px 0px -8% 0px",
-      threshold: 0.16,
+      rootMargin: "0px 0px -6% 0px",
+      threshold: 0.1,
     },
   );
 
   revealTargets.forEach((element) => observer.observe(element));
 }
 
+// Initialize Spotlight effects on interactive cards
+function setupSpotlightEffects() {
+  const cardSelectors = [
+    ".proof-card",
+    ".coach-card",
+    ".program-card",
+    ".suite-card",
+    ".membership-card",
+    ".step-card"
+  ];
+  
+  const cards = document.querySelectorAll(cardSelectors.join(","));
+  
+  cards.forEach(card => {
+    card.classList.add("spotlight-card");
+    
+    // Assign specific gold spotlight effect for paid/premium cards
+    if (
+      card.classList.contains("paid-card") || 
+      card.classList.contains("coach-card-solver") || 
+      card.classList.contains("membership-card-featured")
+    ) {
+      card.classList.add("spotlight-card-gold");
+    }
+    
+    // Add local coordinate tracker
+    card.addEventListener("pointermove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      card.style.setProperty("--pointer-x", x.toFixed(1));
+      card.style.setProperty("--pointer-y", y.toFixed(1));
+    });
+  });
+}
+
+// Mobile Menu toggles
 menuToggle?.addEventListener("click", () => {
   const isOpen = nav?.classList.toggle("is-open");
   body.classList.toggle("menu-open", Boolean(isOpen));
@@ -118,6 +157,7 @@ nav?.addEventListener("click", (event) => {
   }
 });
 
+// Event tracking
 document.querySelectorAll("[data-event], [data-track]").forEach((element) => {
   element.addEventListener("click", () => {
     trackEvent(element.getAttribute("data-event") || element.getAttribute("data-track"), {
@@ -126,6 +166,7 @@ document.querySelectorAll("[data-event], [data-track]").forEach((element) => {
   });
 });
 
+// Diagnostic form submission handler
 diagnosisForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const data = new FormData(diagnosisForm);
@@ -134,8 +175,12 @@ diagnosisForm?.addEventListener("submit", (event) => {
   diagnosisForm.querySelector("button[type='submit']").textContent = "진단 요청 준비 완료";
 });
 
+// Event Listeners
 window.addEventListener("scroll", queueScrollUpdate, { passive: true });
 window.addEventListener("resize", queueScrollUpdate, { passive: true });
 window.addEventListener("pointermove", queuePointerUpdate, { passive: true });
+
+// Init
 updateScrollState();
 setupRevealAnimation();
+setupSpotlightEffects();
