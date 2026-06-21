@@ -115,27 +115,27 @@ function setupSpotlightEffects() {
     ".membership-card",
     ".step-card"
   ];
-  
+
   const cards = document.querySelectorAll(cardSelectors.join(","));
-  
+
   cards.forEach(card => {
     card.classList.add("spotlight-card");
-    
+
     // Assign specific gold spotlight effect for paid/premium cards
     if (
-      card.classList.contains("paid-card") || 
-      card.classList.contains("coach-card-solver") || 
+      card.classList.contains("paid-card") ||
+      card.classList.contains("coach-card-solver") ||
       card.classList.contains("membership-card-featured")
     ) {
       card.classList.add("spotlight-card-gold");
     }
-    
+
     // Add local coordinate tracker
     card.addEventListener("pointermove", (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      
+
       card.style.setProperty("--pointer-x", x.toFixed(1));
       card.style.setProperty("--pointer-y", y.toFixed(1));
     });
