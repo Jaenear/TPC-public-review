@@ -23,6 +23,8 @@ function clampSlide(index) {
 function updateSlide(index, options = {}) {
   currentSlide = clampSlide(index);
   root.style.setProperty("--slide-index", currentSlide);
+  root.style.setProperty("--slide-count", slides.length);
+  root.style.setProperty("--slide-progress", `${((currentSlide + 1) / slides.length) * 100}%`);
 
   status.textContent = `${formatNumber(currentSlide + 1)} / ${formatNumber(slides.length)}`;
   railIndex.textContent = formatNumber(currentSlide + 1);
@@ -61,7 +63,7 @@ function setupRevealAnimation() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const targets = [
     ...document.querySelectorAll(
-      ".section-kicker, .section-heading-row, .proof-card, .text-panel, .flow-visual, .stage-row, .model-card, .share-table, .coach-card, .value-list article, .option-card, .mvp-grid > div, .roadmap li, .final-note",
+      ".section-kicker, .section-heading-row, .proof-card, .text-panel, .flow-visual, .stage-row, .model-card, .share-table, .coach-card, .value-list article, .option-card, .market-stat, .trend-panel, .source-strip, .channel-card, .gap-graphic, .market-note, .summary-card, .closing-statement, .contact-card, .question-accordion details, .question-note, .mvp-grid > div, .roadmap li, .final-note",
     ),
   ];
 
@@ -96,7 +98,7 @@ function setupRevealAnimation() {
 
 function setupSpotlightEffects() {
   const cards = document.querySelectorAll(
-    ".proof-card, .model-card, .text-panel, .option-card, .mvp-grid > div, .value-list article",
+    ".proof-card, .model-card, .text-panel, .option-card, .market-stat, .channel-card, .summary-card, .mvp-grid > div, .value-list article",
   );
 
   cards.forEach((card) => {
