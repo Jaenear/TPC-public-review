@@ -63,7 +63,7 @@ function setupRevealAnimation() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const targets = [
     ...document.querySelectorAll(
-      ".section-kicker, .section-heading-row, .proof-card, .text-panel, .flow-visual, .stage-row, .model-card, .share-table, .coach-card, .value-list article, .option-card, .market-stat, .trend-panel, .source-strip, .channel-card, .gap-graphic, .market-note, .summary-card, .closing-statement, .contact-card, .question-accordion details, .question-note, .mvp-grid > div, .roadmap li, .final-note",
+      ".section-kicker, .section-heading-row, .proof-card, .text-panel, .flow-visual, .service-preview, .stage-row, .model-card, .share-table, .coach-card, .value-list article, .option-card, .market-stat, .trend-panel, .source-strip, .channel-card, .gap-graphic, .market-note, .summary-card, .closing-statement, .contact-card, .question-accordion details, .question-note, .mvp-grid > div, .roadmap li, .final-note",
     ),
   ];
 
