@@ -1153,6 +1153,22 @@ h3 {
   background-position: 0 0, center 15%;
 }
 
+.brand-reference-media {
+  aspect-ratio: 1600 / 680;
+  min-height: 0;
+  background:
+    linear-gradient(180deg, rgba(4, 11, 15, 0.1), rgba(4, 11, 15, 0.52)),
+    var(--surface-2);
+}
+
+.brand-reference-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
 .coach-meta {
   display: flex;
   flex-wrap: wrap;
@@ -1191,6 +1207,21 @@ h3 {
   flex-direction: column;
   justify-content: center;
   flex: 1;
+}
+
+.coach-proposal-grid .coach-card-live {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.coach-proposal-grid .coach-card-live .brand-reference-media {
+  flex: none;
+  margin: -28px -28px 22px;
+  border-radius: 19px 19px 0 0;
+}
+
+.coach-proposal-grid .coach-card-live .coach-info {
+  justify-content: flex-start;
 }
 
 .value-list {
@@ -2557,6 +2588,11 @@ h3 {
     margin: -28px -28px 18px;
     border-radius: 19px 19px 0 0;
     background-position: center 15%;
+  }
+
+  .coach-proposal-grid .coach-card-live .brand-reference-media {
+    aspect-ratio: 1600 / 680;
+    min-height: 0;
   }
 
   .coach-proposal-grid .coach-info {
