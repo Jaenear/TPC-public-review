@@ -11,7 +11,10 @@
     <link rel="preload" as="image" href="../assets/tpc-logo-header.svg" />
     <link rel="preload" as="image" href="../assets/tpc-hero-orbit.png" />
     <link rel="preload" as="image" href="../assets/tpc-learning-flow.png" />
-    <link rel="preload" as="image" href="../assets/tpc-course-platform-mockup.png" />
+    <link rel="preload" as="image" href="../assets/tpc-platform-overview-clean.png" />
+    <link rel="preload" as="image" href="../assets/tpc-platform-course-sales-clean.png" />
+    <link rel="preload" as="image" href="../assets/tpc-platform-video-analysis-clean.png" />
+    <link rel="preload" as="image" href="../assets/tpc-platform-coach-conversion-clean.png" />
     <link rel="preload" as="image" href="../assets/hero-poker-camp.png" />
     <link rel="preload" as="image" href="../assets/coach-live-phone.png" />
     <link
@@ -24,7 +27,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=clean-logo-1" />
   </head>
   <body>
     <div class="bg-glow bg-glow-1"></div>
@@ -153,7 +156,7 @@
           </div>
         </section>
 
-        <section class="slide visual-slide" data-section="사업기획안" aria-labelledby="slide-4-title">
+        <section class="slide visual-slide platform-slide" data-section="사업기획안" aria-labelledby="slide-4-title">
           <div class="section-kicker">Service Architecture</div>
           <div class="section-heading-row">
             <h2 id="slide-4-title">마케팅,결제,A/S,커뮤니티,강의열람,커스텀솔버,트레이닝툴까지 원트랙 플랫폼</h2>
@@ -163,37 +166,90 @@
               다양한 사이트 기능과 아티클을 제공합니다
             </p>
           </div>
-          <figure class="service-preview service-preview-product" aria-label="TPC 강의 플랫폼 코스 상세 페이지 예시 화면">
-            <div class="preview-main">
-              <img src="../assets/tpc-course-platform-mockup.png" alt="TPC 토너먼트 마스터리 코스 상세, 영상 플레이어, 레인지 분석, 코치 프로필이 포함된 플랫폼 예시 화면" />
+          <figure class="service-preview service-preview-product" data-preview-mode="overview" aria-label="TPC 강의 플랫폼 기능별 예시 화면">
+            <div class="preview-main browser-mockup">
+              <div class="browser-header">
+                <div class="browser-dots">
+                  <span class="browser-dot dot-red"></span>
+                  <span class="browser-dot dot-yellow"></span>
+                  <span class="browser-dot dot-green"></span>
+                </div>
+                <div class="browser-address">academy.twopairpoker.com</div>
+              </div>
+              <div class="browser-body">
+                <img class="product-preview-image" src="../assets/tpc-platform-overview-clean.png" alt="TPC 운영 플랫폼 오버뷰 예시 화면" />
+              </div>
               <div class="preview-caption">
-                <span>Course Product Page</span>
-                <strong>강의 상세 · 영상 플레이어 · 레인지 분석 · 코칭 전환</strong>
+                <span id="product-preview-label">Platform Overview</span>
+                <strong id="product-preview-title">마케팅 · 결제 · 강의 열람 · 코칭 전환 운영 대시보드</strong>
               </div>
             </div>
 
-            <div class="preview-stack" aria-label="랜딩페이지 이미지 활용 예시">
-              <article class="preview-feature-card">
+            <div class="preview-stack" aria-label="플랫폼 기능별 이미지 예시">
+              <button
+                class="preview-feature-card is-active"
+                type="button"
+                data-preview-mode="overview"
+                data-preview-src="../assets/tpc-platform-overview-clean.png"
+                data-preview-alt="TPC 운영 플랫폼 오버뷰 예시 화면"
+                data-preview-label="Platform Overview"
+                data-preview-title="마케팅 · 결제 · 강의 열람 · 코칭 전환 운영 대시보드"
+              >
+                <span class="preview-thumb" aria-hidden="true"><img src="../assets/tpc-platform-overview-clean.png" alt="" /></span>
+                <div>
+                  <span>Operating Hub</span>
+                  <strong>원트랙 플랫폼</strong>
+                  <p>유입부터 강의 구매, 커뮤니티, 코칭 연결까지 한 화면에서 관리되는 운영 구조.</p>
+                </div>
+              </button>
+              <button
+                class="preview-feature-card"
+                type="button"
+                data-preview-mode="course"
+                data-preview-src="../assets/tpc-platform-course-sales-clean.png"
+                data-preview-alt="TPC 코스 판매 페이지 예시 화면"
+                data-preview-label="Course Product Page"
+                data-preview-title="강의 상세 · 가격 · 평점 · 수강 CTA"
+              >
+                <span class="preview-thumb" aria-hidden="true"><img src="../assets/tpc-platform-course-sales-clean.png" alt="" /></span>
                 <div>
                   <span>Learning Product</span>
                   <strong>코스 판매 페이지</strong>
                   <p>러닝타임, 강의 수, 난이도, 평점까지 한 화면에서 확인하는 상품 구조.</p>
                 </div>
-              </article>
-              <article class="preview-feature-card">
+              </button>
+              <button
+                class="preview-feature-card"
+                type="button"
+                data-preview-mode="analysis"
+                data-preview-src="../assets/tpc-platform-video-analysis-clean.png"
+                data-preview-alt="TPC 영상 플레이어와 레인지 분석 툴 예시 화면"
+                data-preview-label="Video + Analysis Tool"
+                data-preview-title="영상 플레이어 · 솔버 · 레인지 분석"
+              >
+                <span class="preview-thumb" aria-hidden="true"><img src="../assets/tpc-platform-video-analysis-clean.png" alt="" /></span>
                 <div>
                   <span>Training Layer</span>
                   <strong>영상 + 분석 툴</strong>
                   <p>영상 강의 안에서 핸드 리뷰, 솔버, 레인지표를 함께 보여주는 구조.</p>
                 </div>
-              </article>
-              <article class="preview-feature-card">
+              </button>
+              <button
+                class="preview-feature-card"
+                type="button"
+                data-preview-mode="coach"
+                data-preview-src="../assets/tpc-platform-coach-conversion-clean.png"
+                data-preview-alt="TPC 코치 프로필과 1:1 코칭 전환 예시 화면"
+                data-preview-label="Coach Conversion"
+                data-preview-title="코치 프로필 · 1:1 코칭 · 패키지 전환"
+              >
+                <span class="preview-thumb" aria-hidden="true"><img src="../assets/tpc-platform-coach-conversion-clean.png" alt="" /></span>
                 <div>
                   <span>Coach Conversion</span>
                   <strong>프로필과 코칭 연결</strong>
                   <p>강의 수강 후 코치 프로필, 1:1 코칭, 패키지 상품으로 자연스럽게 전환.</p>
                 </div>
-              </article>
+              </button>
             </div>
           </figure>
           <div class="stage-row" aria-label="서비스 흐름">
@@ -292,15 +348,17 @@
           <div class="coach-proposal-grid">
             <article class="coach-card coach-card-live">
               <div class="coach-media" aria-hidden="true"></div>
-              <span>Initial Partner</span>
-              <h3>검증된 브랜드 퀄리티 기준</h3>
-              <p>최소 100방 레귤러 기준으로 검증된 국내 포커프로 커뮤니티로써의 브랜드를 약속합니다.
-                 TPC에 소속되어 있다는것만으로도, 추가적인 검증이 필요하지 않게끔 노력하겠습니다.
-              </p>
-              <div class="coach-meta">
-                <span>REVIEW</span>
-                <span>STORY</span>
-                <span>COACHING</span>
+              <div class="coach-info">
+                <span>Initial Partner</span>
+                <h3>검증된 브랜드 퀄리티 기준</h3>
+                <p>최소 100방 레귤러 기준으로 검증된 국내 포커프로 커뮤니티로써의 브랜드를 약속합니다.
+                   TPC에 소속되어 있다는것만으로도, 추가적인 검증이 필요하지 않게끔 노력하겠습니다.
+                </p>
+                <div class="coach-meta">
+                  <span>REVIEW</span>
+                  <span>STORY</span>
+                  <span>COACHING</span>
+                </div>
               </div>
             </article>
             <div class="value-list">
@@ -653,6 +711,6 @@
       <button class="control-button" type="button" data-next aria-label="다음 슬라이드">→</button>
     </div>
 
-    <script src="./script.js"></script>
+    <script src="./script.js?v=clean-logo-1"></script>
   </body>
 </html>

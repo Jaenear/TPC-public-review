@@ -1,6 +1,7 @@
 const root = document.documentElement;
 const body = document.body;
 const slides = [...document.querySelectorAll(".slide")];
+const slideTrack = document.querySelector(".slide-track");
 const navButtons = [...document.querySelectorAll("[data-target]")];
 const prevButtons = [...document.querySelectorAll("[data-prev]")];
 const nextButtons = [...document.querySelectorAll("[data-next]")];
@@ -25,6 +26,13 @@ function updateSlide(index, options = {}) {
   root.style.setProperty("--slide-index", currentSlide);
   root.style.setProperty("--slide-count", slides.length);
   root.style.setProperty("--slide-progress", `${((currentSlide + 1) / slides.length) * 100}%`);
+  const slideTranslate = `${currentSlide * -window.innerWidth}px`;
+  root.style.setProperty("--slide-translate", slideTranslate);
+  root.style.setProperty("--slide-offset", slideTranslate);
+
+  if (slideTrack) {
+    slideTrack.style.marginLeft = desktopQuery.matches ? slideTranslate : "";
+  }
 
   status.textContent = `${formatNumber(currentSlide + 1)} / ${formatNumber(slides.length)}`;
   railIndex.textContent = formatNumber(currentSlide + 1);
@@ -110,6 +118,40 @@ function setupSpotlightEffects() {
   });
 }
 
+function setupProductPreviewSwitcher() {
+  const preview = document.querySelector(".service-preview-product");
+  const controls = [...document.querySelectorAll("[data-preview-mode]")].filter((element) =>
+    element.classList.contains("preview-feature-card"),
+  );
+  const image = preview?.querySelector(".product-preview-image");
+  const label = document.querySelector("#product-preview-label");
+  const title = document.querySelector("#product-preview-title");
+
+  if (!preview || !controls.length) return;
+
+  controls.forEach((control) => {
+    control.setAttribute("aria-pressed", String(control.classList.contains("is-active")));
+
+    control.addEventListener("click", () => {
+      const mode = control.dataset.previewMode || "course";
+      preview.dataset.previewMode = mode;
+
+      controls.forEach((item) => {
+        const isActive = item === control;
+        item.classList.toggle("is-active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
+
+      if (label) label.textContent = control.dataset.previewLabel || "";
+      if (title) title.textContent = control.dataset.previewTitle || "";
+      if (image && control.dataset.previewSrc) {
+        image.src = control.dataset.previewSrc;
+        image.alt = control.dataset.previewAlt || control.dataset.previewTitle || "";
+      }
+    });
+  });
+}
+
 function handleWheel(event) {
   if (!desktopQuery.matches) return;
   if (Math.abs(event.deltaY) < 18) return;
@@ -154,7 +196,9 @@ nextButtons.forEach((button) => button.addEventListener("click", () => updateSli
 window.addEventListener("wheel", handleWheel, { passive: false });
 window.addEventListener("keydown", handleKeydown);
 desktopQuery.addEventListener("change", () => updateSlide(currentSlide));
+window.addEventListener("resize", () => updateSlide(currentSlide));
 
 setupRevealAnimation();
 setupSpotlightEffects();
+setupProductPreviewSwitcher();
 updateSlide(0);
