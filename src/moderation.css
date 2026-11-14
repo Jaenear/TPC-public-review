@@ -1,0 +1,384 @@
+/* Community review follows the product's existing dark/mint visual system. */
+.mod-page {
+  max-width: 1240px;
+}
+.mod-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 10px;
+  margin: 24px 0 34px;
+  width: fit-content;
+  flex-wrap: wrap;
+}
+.mod-tabs a {
+  padding: 10px 18px;
+  color: var(--muted);
+  font-size: 13px;
+  border-radius: 7px;
+}
+.mod-tabs a[aria-current] {
+  color: var(--green);
+  background: #213229;
+}
+.mod-list-head,
+.mod-card-heading,
+.mod-section-head,
+.mod-summary,
+.mod-card-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+}
+.mod-list-head h2 {
+  font-size: 24px;
+  margin: 8px 0;
+}
+.mod-list-head small {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 9px;
+}
+.mod-list-head form {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+}
+.mod-list-head .field {
+  margin: 0;
+  min-width: 170px;
+}
+.mod-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+.mod-card {
+  padding: 25px 28px;
+}
+.mod-card h3 {
+  margin: 8px 0 0;
+  font-size: 18px;
+}
+.mod-card h3 a {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.mod-card h3 svg {
+  color: var(--green);
+}
+.mod-card-reason {
+  margin: 21px 0;
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 12px;
+}
+.mod-card-reason > span,
+.mod-card-footer > span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.mod-card-reason p {
+  margin: 0;
+  color: #d2d5d4;
+  font-size: 14px;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+.mod-card-footer {
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+  min-height: 38px;
+}
+.mod-policy-note {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.mod-summary {
+  border-left: 3px solid var(--green);
+  margin: 24px 0;
+}
+.mod-summary h2 {
+  font-size: 26px;
+  margin: 10px 0;
+}
+.mod-summary p:not(.eyebrow),
+.mod-owner {
+  color: var(--muted);
+  font-size: 12px;
+}
+.mod-summary > div:last-child {
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+}
+.mod-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(300px, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+.mod-main {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+.mod-main h2,
+.mod-form-panel h2 {
+  font-size: 18px;
+  margin: 0 0 18px;
+}
+.mod-main h3 {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+.mod-main .p-user-body {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.mod-rule {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 16px;
+}
+.mod-rule summary {
+  font-size: 12px;
+  color: #c2c9c4;
+  cursor: pointer;
+  line-height: 1.7;
+}
+.mod-submission {
+  margin-top: 23px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+.mod-comparison {
+  overflow: auto;
+  margin: 18px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.mod-comparison table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 11px;
+}
+.mod-comparison th,
+.mod-comparison td {
+  padding: 13px 11px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  text-align: left;
+}
+.mod-comparison th {
+  color: var(--muted);
+  font-weight: 400;
+  background: #181b1a;
+}
+.mod-comparison .mod-changed {
+  color: #f0cb8d;
+  background: #2a241c;
+}
+.mod-comparison code {
+  font-family: var(--en);
+  font-size: 10px;
+}
+.mod-section-head {
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.mod-section-head h2 {
+  margin: 0;
+}
+.mod-section-head > span {
+  color: var(--muted);
+  font-size: 11px;
+}
+.mod-form-panel .field {
+  margin-top: 20px;
+}
+.mod-form-panel textarea {
+  resize: vertical;
+  min-height: 145px;
+}
+.mod-form-panel .btn-primary {
+  width: 100%;
+  justify-content: center;
+  margin-top: 16px;
+}
+.mod-feedback {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #e6c281;
+  overflow-wrap: anywhere;
+}
+.mod-feedback:empty {
+  display: none;
+}
+.mod-readonly {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.mod-check {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #c1c9c4;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.mod-check input {
+  margin-top: 5px;
+  flex: 0 0 auto;
+  accent-color: var(--green);
+}
+.mod-attention {
+  background: #29241b;
+  border: 1px solid #665334;
+  border-radius: 10px;
+  padding: 20px;
+  color: #e3ca9e;
+}
+.mod-attention h2,
+.mod-attention h3 {
+  margin: 0 0 9px;
+  font-size: 15px;
+}
+.mod-attention p {
+  font-size: 12px;
+  line-height: 1.9;
+}
+.mod-form-panel .mod-attention {
+  margin-top: 20px;
+}
+.mod-preview {
+  margin-top: 22px;
+  border-top: 1px solid #3c5846;
+  padding-top: 20px;
+}
+.mod-preview h3 {
+  color: var(--green);
+  font-size: 16px;
+}
+.mod-preview .p-user-body {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.mod-buttons {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+.mod-history ol {
+  list-style: none;
+  padding: 0;
+  margin: 23px 0 0;
+}
+.mod-history li {
+  position: relative;
+  padding: 0 0 27px 23px;
+  border-left: 1px solid #345240;
+}
+.mod-history li::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -4px;
+  width: 7px;
+  height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+}
+.mod-history li:last-child {
+  padding-bottom: 0;
+  border-color: transparent;
+}
+.mod-history li > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.mod-history strong {
+  font-weight: 500;
+  font-size: 13px;
+}
+.mod-history time,
+.mod-history small {
+  font-size: 11px;
+  color: var(--muted);
+}
+.mod-history p {
+  font-size: 13px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+  margin: 11px 0;
+  white-space: pre-wrap;
+}
+.mod-history .text-link {
+  display: block;
+  margin-top: 12px;
+  font-size: 11px;
+}
+@media (max-width: 900px) {
+  .mod-detail-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .mod-sidebar {
+    grid-row: 1;
+  }
+}
+@media (max-width: 600px) {
+  .mod-card {
+    padding: 20px;
+  }
+  .mod-summary {
+    align-items: start;
+    flex-direction: column;
+  }
+  .mod-summary > div:last-child {
+    justify-items: start;
+  }
+  .mod-list-head {
+    align-items: start;
+    flex-direction: column;
+  }
+  .mod-list-head form {
+    width: 100%;
+  }
+  .mod-list-head .field {
+    flex: 1;
+  }
+  .mod-card-heading {
+    align-items: start;
+    flex-wrap: wrap;
+  }
+  .mod-card-reason {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .mod-card-footer {
+    align-items: start;
+  }
+  .mod-tabs a {
+    padding: 9px 12px;
+  }
+  .mod-comparison th,
+  .mod-comparison td {
+    padding: 11px 9px;
+  }
+}

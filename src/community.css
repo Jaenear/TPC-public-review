@@ -1,0 +1,254 @@
+.cm-thread h2 {
+  margin: 0;
+}
+.cm-section-head,
+.cm-comment-head,
+.cm-comment-actions,
+.cm-form-actions,
+.cm-context,
+.cm-revision-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.cm-section-head {
+  justify-content: space-between;
+}
+.cm-thread-note {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 12px 0 22px;
+}
+.cm-conversation {
+  border-top: 1px solid var(--border);
+  padding: 4px 0;
+}
+.cm-comment {
+  padding: 20px 0;
+  scroll-margin-top: 110px;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.cm-comment:focus {
+  outline: 2px solid var(--green);
+  outline-offset: 7px;
+  border-radius: 8px;
+}
+.cm-comment-head {
+  gap: 10px;
+}
+.cm-comment-head strong {
+  font-size: 14px;
+}
+.cm-comment-head span,
+.cm-reply-label {
+  color: var(--muted);
+  font-size: 12px;
+}
+.cm-comment .p-user-body {
+  margin: 12px 0;
+  white-space: normal;
+}
+.cm-comment-actions {
+  gap: 8px 16px;
+}
+.cm-comment-actions a,
+.cm-comment-actions button {
+  font-size: 12px;
+}
+.cm-replies {
+  list-style: none;
+  margin: 0 0 0 16px;
+  padding: 0 0 0 22px;
+  border-left: 2px solid color-mix(in srgb, var(--green) 28%, transparent);
+}
+.cm-replies > li + li {
+  border-top: 1px solid var(--border);
+}
+.cm-reply-label {
+  margin: 0 0 9px;
+  color: var(--green);
+}
+.cm-unavailable {
+  color: var(--muted);
+  font-style: italic;
+}
+.cm-editor {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  margin-top: 12px;
+}
+.cm-editor textarea {
+  width: 100%;
+  resize: vertical;
+  min-width: 0;
+}
+.cm-feedback {
+  margin: 14px 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.cm-form-actions {
+  margin: 18px 0;
+}
+.cm-form-actions button,
+.cm-form-actions a {
+  white-space: normal;
+}
+.cm-preview,
+.cm-conflict {
+  margin-top: 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+.cm-preview h3,
+.cm-conflict h3 {
+  margin: 0 0 12px;
+}
+.cm-conflict {
+  border-color: rgba(236, 180, 79, 0.45);
+}
+.cm-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+.cm-compare section {
+  padding: 16px;
+  background: var(--surface);
+  border-radius: 10px;
+  min-width: 0;
+}
+.cm-compare h4 {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0 0 12px;
+}
+.cm-workspace {
+  max-width: 1120px;
+}
+.cm-workspace-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+.cm-workspace-grid > .p-panel {
+  min-width: 0;
+}
+.cm-workspace-grid .cm-editor {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+.cm-context {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.cm-context span {
+  min-width: 0;
+}
+.cm-original {
+  position: sticky;
+  top: 100px;
+}
+.cm-original .p-user-body,
+.cm-compare .p-user-body,
+.cm-revisions .p-user-body {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.cm-history {
+  max-width: 920px;
+}
+.cm-revisions {
+  display: grid;
+  gap: 16px;
+}
+.cm-revisions h2 {
+  margin: 0;
+  font-size: 17px;
+}
+.cm-reason {
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.cm-block-list {
+  display: grid;
+  gap: 14px;
+}
+.cm-block-list article {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.cm-block-list article > div {
+  flex: 1;
+  min-width: 160px;
+}
+.cm-block-list h2 {
+  font-size: 17px;
+  margin: 0;
+}
+.cm-block-list h2,
+.cm-block-setting h2 {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.cm-block-setting {
+  max-width: 850px;
+  line-height: 1.8;
+}
+@media (max-width: 700px) {
+  .cm-workspace-grid,
+  .cm-compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cm-original {
+    position: static;
+    grid-row: 1;
+  }
+  .cm-replies {
+    margin-left: 4px;
+    padding-left: 12px;
+  }
+  .cm-comment-head {
+    align-items: flex-start;
+    gap: 5px 9px;
+  }
+  .cm-section-head {
+    align-items: flex-start;
+  }
+  .cm-preview,
+  .cm-conflict {
+    padding: 15px;
+  }
+  .cm-form-actions .btn {
+    flex: 1 1 160px;
+    justify-content: center;
+  }
+  .cm-block-list article > div {
+    flex-basis: 100%;
+  }
+}
+.cm-editor[hidden],
+.cm-editor [hidden],
+.cm-workspace[hidden],
+.cm-workspace [hidden],
+.cm-thread [hidden] {
+  display: none !important;
+}
