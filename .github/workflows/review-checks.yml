@@ -1,0 +1,18 @@
+name: TPC review deployment checks
+on:
+  push:
+    branches: [public-review]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  wsgi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - name: Verify auth, media, member isolation and persistent SQLite through WSGI
+        run: python -m unittest deployment.test_wsgi -v

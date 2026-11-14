@@ -1,0 +1,18 @@
+"""Paste into the WSGI configuration shown by PythonAnywhere's Web tab.
+
+Replace YOUR_USERNAME with the actual logged-in account before reloading.
+Keep the database under the private home directory; never map it as static.
+"""
+import os
+import sys
+
+PROJECT = "/home/YOUR_USERNAME/TPC-public-review"
+if PROJECT not in sys.path:
+    sys.path.insert(0, PROJECT)
+
+from deployment.wsgi import make_application
+
+application = make_application(
+    "https://YOUR_USERNAME.pythonanywhere.com",
+    os.path.join(PROJECT, "review-data"),
+)
