@@ -58,8 +58,9 @@ class StaticPreviewTest(unittest.TestCase):
         self.assertEqual(hashlib.sha256(target.read_bytes()).hexdigest(), expected)
         player = (self.output / "src/video-player.js").read_text()
         self.assertNotIn("/api/media/", player)
-        self.assertIn('src="/public-media/', player)
-        self.assertIn(".mp4?reload=", player)
+        self.assertIn('src="${e(previewMediaUrl(lesson.videoAssetId))}"', player)
+        self.assertIn("player.src = previewMediaUrl(lesson.videoAssetId);", player)
+        self.assertIn('await installStaticPreview', (self.output / 'src/preview-entry.js').read_text())
 
     def test_github_pages_subpath_rebases_all_root_asset_namespaces(self):
         for file in self.subpath.rglob("*"):
@@ -68,7 +69,7 @@ class StaticPreviewTest(unittest.TestCase):
         html = (self.subpath / "index.html").read_text()
         self.assertIn('src="/TPC-public-review/src/preview-entry.js"', html)
         self.assertIn('href="/TPC-public-review/styles.css"', html)
-        self.assertIn('src="/TPC-public-review/public-media/', (self.subpath / "src/video-player.js").read_text())
+        self.assertIn('new URL("../", import.meta.url)', (self.subpath / "src/preview-entry.js").read_text())
 
     def test_no_credentials_form_or_fabricated_signup_in_preview(self):
         app = (self.output / "src/app.js").read_text()

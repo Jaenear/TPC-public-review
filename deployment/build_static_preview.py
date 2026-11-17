@@ -149,9 +149,12 @@ def build(destination, base="/"):
     player = player_path.read_text()
     if player.count('/api/media/') != 2:
         raise ValueError("Media entry points changed; review the static media boundary.")
-    player = player.replace('/api/media/${e(lesson.videoAssetId)}', base + 'public-media/${e(lesson.videoAssetId)}.mp4')
-    player = player.replace('/api/media/${encodeURIComponent(lesson.videoAssetId)}?',
-                            base + 'public-media/${encodeURIComponent(lesson.videoAssetId)}.mp4?')
+    player = 'import { previewMediaUrl } from "./static-preview-api.js";\n' + player
+    player = player.replace('/api/media/${e(lesson.videoAssetId)}', '${e(previewMediaUrl(lesson.videoAssetId))}')
+    retry_source = '`/api/media/${encodeURIComponent(lesson.videoAssetId)}?reload=${encodeURIComponent(crypto.randomUUID())}`'
+    if player.count(retry_source) != 1:
+        raise ValueError("Media reload entry changed; review the static media boundary.")
+    player = player.replace(retry_source, 'previewMediaUrl(lesson.videoAssetId)')
     player = player.replace("로그인하고 무료 강의를 등록하면 이어보기 위치를 저장합니다.",
                             "공개 미리보기에서는 영상을 재생할 수 있습니다. 회원별 이어보기 저장은 서버 연결 후 제공됩니다.")
     player_path.write_text(player)
@@ -163,7 +166,7 @@ def build(destination, base="/"):
 try {
   const response = await fetch(new URL("../preview-data.json", import.meta.url));
   if (!response.ok) throw new Error("공개 강의 정보를 불러오지 못했습니다.");
-  installStaticPreview(await response.json());
+  await installStaticPreview(await response.json(), new URL("../", import.meta.url));
   document.querySelector("#preview-details").addEventListener("click", showPreviewInfo);
   await import("./app.js");
 } catch (error) {

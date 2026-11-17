@@ -23,7 +23,10 @@ retain 401. Missing APIs never fall back to another person's data.
 
 The sample MP4 SHA-256 is
 `1d2cf29f94ecab4cdf0f1af93f28515b6da7f5c2e2a4f82f397d46ef9535dc39`.
-Native video URLs point at static public media, including retry/reload. Current
+The small sample is loaded from static public media, SHA-256 checked, and played
+from a browser Blob URL so seek/reload works on hosts without Range support.
+This bounded sample path rejects files above 4 MiB and is not a full-course
+streaming strategy. Current
 position and maximum reached percentages can be viewed while playing. They do
 not represent verified continuous viewing or cross-visit member persistence.
 

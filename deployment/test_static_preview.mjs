@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createPreviewFetch, routeKey } from "./static-preview-api.mjs";
+import { readFile } from "node:fs/promises";
+import { createPreviewFetch, routeKey, loadPreviewSample, previewMediaUrl } from "./static-preview-api.mjs";
 
 const origin = "https://jaenear.github.io";
 const routes = {
@@ -53,4 +54,28 @@ test("returned objects are isolated from subsequent calls", async () => {
   const data = await (await fetchPreview("/api/session")).json();
   data.user = { id: "fake" };
   assert.equal((await (await fetchPreview("/api/session")).json()).user, null);
+});
+
+test("owned sample becomes a verified seekable Blob under a Pages subpath", async () => {
+  const bytes = await readFile(new URL('../review-media/preflop-sample.mp4', import.meta.url));
+  const sampleSha256 = '1d2cf29f94ecab4cdf0f1af93f28515b6da7f5c2e2a4f82f397d46ef9535dc39';
+  const sampleId = 'asset_' + sampleSha256.slice(0,32);
+  const calls = [];
+  const blobURL = await loadPreviewSample({sampleSha256,sampleId}, async (url, options) => {
+    calls.push({url,options}); return new Response(bytes);
+  }, origin + '/TPC-public-review/');
+  assert.ok(blobURL.startsWith('blob:'));
+  assert.equal(previewMediaUrl(sampleId), blobURL);
+  assert.equal(calls[0].url, origin + '/TPC-public-review/public-media/' + sampleId + '.mp4');
+  assert.equal(calls[0].options.credentials, 'omit');
+  assert.throws(() => previewMediaUrl('asset_private'));
+  URL.revokeObjectURL(blobURL);
+});
+test("sample identity, integrity, request failure and size are checked", async () => {
+  const sampleSha256 = '1d2cf29f94ecab4cdf0f1af93f28515b6da7f5c2e2a4f82f397d46ef9535dc39';
+  const sampleId = 'asset_' + sampleSha256.slice(0,32);
+  await assert.rejects(loadPreviewSample({sampleId:'../private',sampleSha256}, noNetwork, origin + '/'));
+  await assert.rejects(loadPreviewSample({sampleId,sampleSha256}, async()=>new Response('denied',{status:403}), origin + '/'));
+  await assert.rejects(loadPreviewSample({sampleId,sampleSha256}, async()=>new Response('wrong content'), origin + '/'));
+  await assert.rejects(loadPreviewSample({sampleId,sampleSha256}, async()=>new Response(new Uint8Array(4*1024*1024+1)), origin + '/'));
 });

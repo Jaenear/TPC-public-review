@@ -1,5 +1,31 @@
 // This adapter belongs to the generated public preview, never the live app.
 export const PREVIEW_MESSAGE = "공개 미리보기입니다. 로그인·회원별 진도 저장·글쓰기·결제는 서버 연결 후 이용할 수 있습니다.";
+const sampleMedia = new Map();
+
+export async function loadPreviewSample(manifest, nativeFetch, baseURL) {
+  const hash = manifest.sampleSha256;
+  if (!/^[a-f0-9]{64}$/.test(hash || "") || manifest.sampleId !== "asset_" + hash.slice(0, 32)) {
+    throw new Error("Invalid owned sample identity");
+  }
+  const source = new URL("public-media/" + manifest.sampleId + ".mp4", baseURL);
+  const response = await nativeFetch(source.href, {credentials:"omit"});
+  if (!response.ok) throw new Error("샘플 영상을 불러오지 못했습니다.");
+  const bytes = await response.arrayBuffer();
+  if (bytes.byteLength === 0 || bytes.byteLength > 4 * 1024 * 1024) throw new Error("Unexpected sample size");
+  const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map(v => v.toString(16).padStart(2, "0")).join("");
+  if (digest !== hash) throw new Error("샘플 영상 원본을 확인하지 못했습니다.");
+  // Static hosts may omit byte-range support. The small, owned preview clip is
+  // verified once and played from a Blob so native seeking/reload still works.
+  const url = URL.createObjectURL(new Blob([bytes], {type:"video/mp4"}));
+  sampleMedia.set(manifest.sampleId, url);
+  return url;
+}
+
+export function previewMediaUrl(assetId) {
+  const url = sampleMedia.get(assetId);
+  if (!url) throw new Error("This video is not part of the public preview");
+  return url;
+}
 
 export function routeKey(input) {
   const url = new URL(input, "https://tpc-static-preview.example");
@@ -45,7 +71,8 @@ export function showPreviewInfo() {
   if (!dialog.open) dialog.showModal();
 }
 
-export function installStaticPreview(manifest) {
+export async function installStaticPreview(manifest, baseURL) {
   const nativeFetch = window.fetch.bind(window);
+  await loadPreviewSample(manifest, nativeFetch, baseURL);
   window.fetch = createPreviewFetch(manifest, nativeFetch, location.origin);
 }
