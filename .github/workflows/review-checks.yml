@@ -14,5 +14,13 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
       - name: Verify auth, media, member isolation and persistent SQLite through WSGI
-        run: python -m unittest deployment.test_wsgi -v
+        run: python -m unittest deployment.test_wsgi deployment.test_static_preview -v
+      - name: Verify static preview request boundary
+        run: node --test deployment/test_static_preview.mjs
+      - name: Build Pages-compatible public files without private runtime data
+        run: python deployment/build_static_preview.py --output _site --base /TPC-public-review/
